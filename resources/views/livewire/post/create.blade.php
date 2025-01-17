@@ -84,7 +84,7 @@
 
                     <li>
                         <div class="flex items-center gap-3 justify-between">
-                            <span>Turn off commenting</span>
+                            <span>Allow commenting</span>
 
                             <label class="inline-flex items-center cursor-pointer">
                                 <input wire:model="allow_commenting" type="checkbox" value="" class="sr-only peer" checked>
