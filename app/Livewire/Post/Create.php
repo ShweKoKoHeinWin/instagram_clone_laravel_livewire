@@ -17,7 +17,7 @@ class Create extends ModalComponent
     public $description;
     public $location;
     public $hide_like_view = false;
-    public $allow_commenting = false;
+    public $allow_commenting = true;
 
     /**
      * Supported: 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl'

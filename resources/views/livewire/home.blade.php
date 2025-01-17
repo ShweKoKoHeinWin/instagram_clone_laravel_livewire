@@ -1,4 +1,20 @@
-<div class="w-full h-full">
+<div class="w-full h-full"
+    x-data="{
+        canLoadMore:@entangle('canLoadMore')
+    }"
+
+    @scroll.window.trottle="
+        scrollTop = window.scrollY || window.scrollTop;
+        divHeight = window.innerHeight || document.documentElement.clientHeight;
+        scrollHeight = document.documentElement.scrollHeight;
+
+        isScrolled = (scrollTop + divHeight) >= scrollHeight - 1;
+
+        if(isScrolled && canLoadMore) {
+            @this.loadMore();
+        }
+    "
+>
     {{-- header --}}
     <header class="md:hidden sticky top-0 bg-white">
 
@@ -43,7 +59,7 @@
 
             {{-- Posts --}}
             <section class="mt-5 space-y-4 p-2">
-                @if($posts->count())
+                @if(count($posts) > 0)
                     @foreach ($posts as $post)
                         <livewire:post.item wire:key="post-{{ $post->id }}" :$post />
                     @endforeach
