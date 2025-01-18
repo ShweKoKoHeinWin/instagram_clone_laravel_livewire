@@ -82,18 +82,22 @@
                 <h4 class="font-bold text-gray-700/95">Suggestions For You</h4>
 
                 <ul class="my-3 space-y-3">
-                    @foreach ([2,1,1,11,1,11,1,1,1,1,1,1,1,1,11,1,1,1,1] as $story)
-                    <li class="flex items-center gap-2">
-                        <x-avatar src="https://placehold.co/600x600" class="w-12 h-12" />
+                    @foreach ($suggestedUsers as $user)
+                    <li class="flex items-center gap-2" wire:key="user-{{ $user->id }}">
+                        <x-avatar wire:ignore src="https://placehold.co/600x600" class="w-12 h-12" />
 
                         <div class="grid grid-cols-7 w-full gap-2">
                             <div class="col-span-5">
-                                <h5 class="font-semibold truncate text-sm">{{ fake()->name }}</h5>
-                                <p class="text-xs truncate">Followed By {{ fake()->name }}</p>
+                                <a href="{{ route('profile.home', $user->user_name) }}" class="font-semibold truncate text-sm">{{ $user->name }}</a>
+                                <p class="text-xs truncate" wire:ignore>Followed By {{ $user->name }}</p>
                             </div>
 
                             <div class="col-span-2 flex text-right justify-end">
-                                <button class="font-bold text-blue-500 ml-auto text-sm">Follow</button>
+                                @if(auth()->user()->isFollowing($user))
+                                    <button wire:click="toggleFollow({{ $user->id }})" class="font-bold text-blue-500 ml-auto text-sm">Following</button>
+                                @else
+                                    <button wire:click="toggleFollow({{ $user->id }})" class="font-bold text-blue-500 ml-auto text-sm">Follow</button>
+                                @endif
                             </div>
                         </div>
                     </li>

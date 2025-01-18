@@ -209,9 +209,8 @@
 
 
     @auth
-
     <li>
-        <a wire:navigate href="" class="flex items-center gap-5">
+        <a wire:navigate href="{{ route('profile.home', ['user' => auth()->user()->user_name]) }}" class="flex items-center gap-5">
 
 
             <x-avatar src="https://source.unsplash.com/400x400?face" class=" w-7 h-7 shrink-0" />

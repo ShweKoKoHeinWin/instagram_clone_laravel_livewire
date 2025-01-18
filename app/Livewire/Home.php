@@ -3,8 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\Post;
-use Livewire\Attributes\On;
+use App\Models\User;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class Home extends Component
 {
@@ -47,6 +48,11 @@ class Home extends Component
 
     public function render()
     {
-        return view('livewire.home');
+        $suggestedUsers = User::limit(5)->get();
+        return view('livewire.home', compact('suggestedUsers'));
+    }
+
+    public function toggleFollow(User $user) {
+        auth()->user()->toggleFollow($user);
     }
 }
