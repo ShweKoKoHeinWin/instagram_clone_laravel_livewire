@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Explore;
 use App\Livewire\Home;
 use App\Livewire\Post\View\Modal;
 use App\Livewire\Profile\Home as ProfileHome;
@@ -15,6 +16,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/', Home::class)->name('home');
+    Route::get('/explore', Explore::class)->name('explore');
 
     Route::get('/post/{post}', Modal::class)->name('post.view');
 
