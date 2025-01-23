@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Livewire\Explore;
 use App\Livewire\Home;
-use App\Livewire\Post\View\Modal;
-use App\Livewire\Profile\Home as ProfileHome;
-use App\Livewire\Profile\Reels;
+use App\Livewire\Reels;
+use App\Livewire\Explore;
 use App\Livewire\Profile\Saved;
+use App\Livewire\Post\View\Modal;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Livewire\Profile\Home as ProfileHome;
+use App\Livewire\Profile\Reels as ProfileReels;
 
 
 Route::get('/dashboard', function () {
@@ -19,13 +20,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/explore', Explore::class)->name('explore');
 
     Route::get('/post/{post}', Modal::class)->name('post.view');
+    Route::get('/reels', Reels::class)->name('reels');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/profile/{user}', ProfileHome::class)->name('profile.home');
-    Route::get('/profile/{user}/reels', Reels::class)->name('profile.reels');
+    Route::get('/profile/{user}/reels', ProfileReels::class)->name('profile.reels');
     Route::get('/profile/{user}/saved', Saved::class)->name('profile.saved');
 });
 

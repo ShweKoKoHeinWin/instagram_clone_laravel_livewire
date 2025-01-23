@@ -13,7 +13,7 @@
     @click.outside="$refs.player.pause()"
     x-intersect:leave="$refs.player.pause()"
 >
-    <video @play="playing=true" @pause="playing=false" x-ref="player" class="h-full max-h-[500px] w-full {{ $cover == true ? 'object-cover' : '' }}">
+    <video @play="playing=true" @pause="playing=false" x-ref="player" class="h-full max-h-[800px] w-full {{ $cover == true ? 'object-cover' : '' }}">
         <source src="{{ $source }}" type="video/mp4">
             Your browser does not support the video tag.
     </video>

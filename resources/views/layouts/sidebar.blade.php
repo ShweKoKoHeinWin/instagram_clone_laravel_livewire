@@ -104,7 +104,7 @@
         </a></li>
 
 
-    <li><a wire:navigate href="" class="flex items-center gap-5">
+    <li><a wire:navigate href="{{ route('reels') }}" class="flex items-center gap-5">
 
             <span>
 
@@ -131,12 +131,6 @@
                         clip-rule="evenodd"></path>
                 </svg>
                 @endif
-
-
-
-
-
-
 
             </span>
 
