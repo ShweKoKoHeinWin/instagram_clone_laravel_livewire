@@ -36,4 +36,19 @@
 
         @livewire('wire-elements-modal')
     </body>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+    <script>
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+    
+        var pusher = new Pusher('9254b511af623b0e7b0c', {
+          cluster: 'ap1'
+        });
+    
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+          alert(JSON.stringify(data));
+        });
+      </script>
 </html>

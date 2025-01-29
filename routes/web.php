@@ -7,6 +7,7 @@ use App\Livewire\Profile\Saved;
 use App\Livewire\Post\View\Modal;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Post\View\Page;
 use App\Livewire\Profile\Home as ProfileHome;
 use App\Livewire\Profile\Reels as ProfileReels;
 
@@ -19,7 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/', Home::class)->name('home');
     Route::get('/explore', Explore::class)->name('explore');
 
-    Route::get('/post/{post}', Modal::class)->name('post.view');
+    Route::get('/post/{post}', Page::class)->name('post.view');
+    Route::get('/post/{post}/modal', Modal::class)->name('post.view-modal');
     Route::get('/reels', Reels::class)->name('reels');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

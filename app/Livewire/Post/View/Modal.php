@@ -13,7 +13,7 @@ class Modal extends ModalComponent
 
     public function mount() {
         $this->post = Post::find($this->post);
-        $url = route('post.view', $this->post);
+        $url = route('post.view-modal', $this->post);
 
         // push state using livewire js helper
         $this->js("history.pushState({}, '', '{$url}');");

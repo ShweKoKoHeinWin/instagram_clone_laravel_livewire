@@ -21,6 +21,3 @@ Alpine.plugin(intersect)
 // window.Alpine = Alpine;
 
 // Alpine.start();
-
-
-

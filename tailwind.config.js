@@ -26,6 +26,8 @@ export default {
 
         '2xl:max-w-6xl',
         '2xl:max-w-7xl',
+
+        'my-auto',
     ],
 
     theme: {
